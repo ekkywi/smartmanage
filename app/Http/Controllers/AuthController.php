@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -21,8 +24,33 @@ class AuthController extends Controller
         return view('register');
     }
 
-    public function app()
+    public function registerPost(Request $request)
     {
-        return view('layouts.app');
+        $request->validate([
+            'username' => 'required|unique:users',
+            'name' => 'required',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        User::create([
+            'username' => $request->username,
+            'name' => $request->name,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil!');
+    }
+
+    public function loginPost(Request $request)
+    {
+        $credentials = $request->only('username', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('dashboard');
+        }
+
+        return back()->withErrors([
+            'username' => 'Username atau password salah.',
+        ]);
     }
 }

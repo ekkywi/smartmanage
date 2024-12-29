@@ -13,7 +13,16 @@
                                     <img alt="logo" class="img-fluid" src="{{ asset("images/logo1.png") }}" style="max-width: 100%; height: auto;">
                                     <p><strong>Asset Management</strong></p>
                                 </div>
-                                <form action="#" method="POST">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                <form action="{{ route("register") }}" method="POST">
                                     @csrf
                                     <div class="form-outline mb-4" data-mdb-input-init>
                                         <label class="form-label" for="username">Username</label>
