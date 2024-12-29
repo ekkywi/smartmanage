@@ -7,10 +7,12 @@
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>@yield("title")</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap4.min.js"></script>
     <link href="{{ asset("css/app.css") }}" rel="stylesheet">
 </head>
 
@@ -46,7 +48,7 @@
                             </a>
                             <ul class="collapse nav flex-column ml-3" data-parent="#menu" id="submenu2">
                                 <li class="w-100">
-                                    <a class="nav-link px-0" href="#"> <span class="d-none d-sm-inline">Kelola Data Pengguna</span></a>
+                                    <a class="nav-link px-0" href="{{ route("user") }}"> <span class="d-none d-sm-inline">Kelola Data Pengguna</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -54,8 +56,8 @@
                     <hr>
                     <div class="dropdown pb-4">
                         <a aria-expanded="false" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-toggle="dropdown" href="#" id="dropdownUser1">
-                            <img alt="hugenerd" class="rounded-circle" height="30" src="https://github.com/mdo.png" width="30">
-                            <span class="d-none d-sm-inline mx-1">loser</span>
+                            <img alt="hugenerd" class="rounded-circle" height="30" src="{{ asset("images/profile.jpg") }}" width="30">
+                            <span class="d-none d-sm-inline mx-1">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                             <li><a class="dropdown-item" href="#">Ganti Password</a></li>
@@ -73,7 +75,11 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $(document).ready(function() {
+            $('#userTable').DataTable();
+        });
+    </script>
 </body>
 
 </html>

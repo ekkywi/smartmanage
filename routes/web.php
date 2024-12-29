@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,4 +32,10 @@ Route::post('/register', [AuthController::class, 'registerPost'])->name('registe
 Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
 
 // Route untuk akses halaman dashboard -> terproteksi
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard')->middleware('auth');
+
+// Route untuk akses halaman user -> terproteksi
+Route::get('/user', [UserController::class, 'user'])->name('user')->middleware('auth');
+
+// Route untuk update user -> lewat modal -> terproteksi
+Route::put('/user/update', [UserController::class, 'update'])->name('user.update')->middleware('auth');
