@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Akses halaman login dari / di redirrect ke /login
+Route::get('/', [AuthController::class, 'index'])->name('index');
+
+// Akses halaman login dari /login
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+
+//Akses halaman register dari /register
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+
+Route::get('/app', [AuthController::class, 'app'])->name('app');

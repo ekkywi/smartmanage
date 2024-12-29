@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    font-family: Poppins, sans-serif;
+}
+
+.sidebar {
+    background: linear-gradient(to right, #0666F5, #1c86ee, #00bfff, #87cefa);
+}
+
+.menu-title {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: white;
+}
