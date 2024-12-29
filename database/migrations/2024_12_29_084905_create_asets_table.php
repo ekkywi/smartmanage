@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('asets', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_aset')->unique();
+            $table->string('nama');
+            $table->string('jenis');
+            $table->string('merk');
+            $table->string('tipe');
+            $table->year('tahun_beli');
+            $table->decimal('nilai_beli', 15, 2);
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

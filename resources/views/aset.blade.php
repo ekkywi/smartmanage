@@ -20,6 +20,8 @@
             </div>
         @endif
 
+        <button class="btn btn-success mb-3" data-target="#addAsetModal" data-toggle="modal">Tambah Aset</button>
+
         <table class="table table-striped table-bordered" id="asetTable" style="width:100%">
             <thead>
                 <tr>
@@ -53,6 +55,60 @@
                 @endforeach
             </tbody>
         </table>
+    </div>
+
+    <div aria-hidden="true" aria-labelledby="addAsetModalLabel" class="modal fade" id="addAsetModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addAsetModalLabel">Tambah Aset</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route("aset.store") }}" id="addAsetForm" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="addKodeAset">Kode Aset</label>
+                            <input class="form-control" id="addKodeAset" name="kode_aset" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="addNama">Nama</label>
+                            <input class="form-control" id="addNama" name="nama" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="addJenis">Jenis</label>
+                            <input class="form-control" id="addJenis" name="jenis" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="addMerk">Merk</label>
+                            <input class="form-control" id="addMerk" name="merk" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="addTipe">Tipe</label>
+                            <input class="form-control" id="addTipe" name="tipe" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="addTahunBeli">Tahun Beli</label>
+                            <input class="form-control" id="addTahunBeli" name="tahun_beli" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="addNilaiBeli">Nilai Beli</label>
+                            <input class="form-control" id="addNilaiBeli" name="nilai_beli" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="addKeterangan">Keterangan</label>
+                            <input class="form-control" id="addKeterangan" name="keterangan" required type="text">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" type="button">Tutup</button>
+                        <button class="btn btn-primary" type="submit">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <div aria-hidden="true" aria-labelledby="editAsetModalLabel" class="modal fade" id="editAsetModal" role="dialog" tabindex="-1">

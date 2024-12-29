@@ -61,7 +61,7 @@
                             <span class="d-none d-sm-inline mx-1">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                            <li><a class="dropdown-item" href="#">Ganti Password</a></li>
+                            <li><a class="dropdown-item" href="{{ route("profile") }}">Ganti Password</a></li>
 
                             <li>
                                 <hr class="dropdown-divider">

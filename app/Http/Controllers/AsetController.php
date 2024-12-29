@@ -13,6 +13,22 @@ class AsetController extends Controller
         return view('aset', compact('asets'));
     }
 
+    public function store(Request $request)
+    {
+        $aset = new Aset();
+        $aset->kode_aset = $request->kode_aset;
+        $aset->nama = $request->nama;
+        $aset->jenis = $request->jenis;
+        $aset->merk = $request->merk;
+        $aset->tipe = $request->tipe;
+        $aset->tahun_beli = $request->tahun_beli;
+        $aset->nilai_beli = $request->nilai_beli;
+        $aset->keterangan = $request->keterangan;
+        $aset->save();
+
+        return redirect()->route('aset')->with('success', 'Data aset sukses ditambahkan');
+    }
+
     public function update(Request $request)
     {
         $aset = Aset::find($request->id);

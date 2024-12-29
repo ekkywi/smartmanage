@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AsetController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,11 +48,20 @@ Route::delete('/user/delete', [UserController::class, 'destroy'])->name('user.de
 // Route untuk akses halaman aset -> terproteksi
 Route::get('/aset', [AsetController::class, 'aset'])->name('aset')->middleware('auth');
 
+// Route untuk tambah aset -> lewat modal -> terproteksi
+Route::post('/aset/store', [AsetController::class, 'store'])->name('aset.store')->middleware('auth');
+
 // Route untuk update aset -> lewat modal -> terproteksi
 Route::put('/aset/update', [AsetController::class, 'update'])->name('aset.update')->middleware('auth');
 
 // Route untuk delete aset -> lewat modal -> terproteksi
 Route::delete('/aset/delete', [AsetController::class, 'destroy'])->name('aset.delete')->middleware('auth');
+
+// Route untuk akses halaman profile -> terproteksi
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile')->middleware('auth');
+
+// Route untuk update profile -> terproteksi
+Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
 // Route untuk logout
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
