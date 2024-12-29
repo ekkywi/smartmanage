@@ -39,3 +39,9 @@ Route::get('/user', [UserController::class, 'user'])->name('user')->middleware('
 
 // Route untuk update user -> lewat modal -> terproteksi
 Route::put('/user/update', [UserController::class, 'update'])->name('user.update')->middleware('auth');
+
+// Route untuk delete user -> lewat modal -> terproteksi
+Route::delete('/user/delete', [UserController::class, 'destroy'])->name('user.delete')->middleware('auth');
+
+// Route untuk logout
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');

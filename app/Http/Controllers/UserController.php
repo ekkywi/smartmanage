@@ -22,4 +22,14 @@ class UserController extends Controller
 
         return redirect()->route('user')->with('success', 'Data user berhasil diupdate');
     }
+
+    public function destroy(Request $request)
+    {
+        $user = User::find($request->id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('user')->with('success', 'Data user berhasil dihapus');
+        }
+        return redirect()->route('user.index')->with('error', 'Data user tidak ditemukan');
+    }
 }

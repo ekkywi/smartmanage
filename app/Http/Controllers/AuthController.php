@@ -53,4 +53,10 @@ class AuthController extends Controller
             'username' => 'Username atau password salah.',
         ]);
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('login');
+    }
 }
