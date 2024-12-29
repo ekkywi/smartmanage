@@ -33,7 +33,7 @@
                     <th>Tahun Beli</th>
                     <th>Nilai Beli</th>
                     <th>Keterangan</th>
-                    <th>Aksi</th>
+                    <th>Kelola</th>
                 </tr>
             </thead>
             <tbody>
@@ -193,6 +193,21 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            $('#asetTable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "scrollY": "500px",
+                "scrollCollapse": true,
+                "pagingType": "full_numbers"
+            });
+        });
+
         $('#editAsetModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');

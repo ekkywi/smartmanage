@@ -27,7 +27,7 @@
                     <th>Nama</th>
                     <th>Tanggal Buat</th>
                     <th>Tanggal Update</th>
-                    <th>Aksi</th>
+                    <th>Kelola</th>
                 </tr>
             </thead>
             <tbody>
@@ -105,6 +105,20 @@
     </div>
 
     <script>
+        $(document).ready(function() {
+            $('#userTable').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "scrollY": "500px",
+                "scrollCollapse": true,
+                "pagingType": "full_numbers"
+            });
+        });
         $('#editUserModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget);
             var id = button.data('id');

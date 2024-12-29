@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col py-3">
+            <div class="col py-3 col-md-10 col-xl-10">
                 @yield("content")
             </div>
         </div>
